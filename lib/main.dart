@@ -40,6 +40,9 @@ void main() {
                 height: deviceHeight,
                 child: ProviderScope(
                   // TODO: The goal would be to get rid of this and the need to override each provider individually
+                  // Essentially the list of things that change per subtree (idProvider),
+                  // is much smaller than the things that don't change, but depend on the idProvider
+                  // (counterStateProvider + a lot of other state in my case)
                   overrides: [
                     idProvider.overrideAs(Provider((_) => i)),
                     counterStateProvider.overrideAs(
